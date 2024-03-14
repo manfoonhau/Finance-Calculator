@@ -67,35 +67,26 @@ if choice == x: #if user inputs 'investment' do the following:
                 print ("\nSimple Interest - Interest you get depending on what you initially deposited per year e.g you deposited £1000 and your interest rate is at 10%, each year you will get £100 ")
                 print ("Compound Interest - Interest you get depending on what you initially deposisted plus the your total interest earnings for that year e.g. you deposited £1000 and your interest rate is at 10% for 2years. Your first year you'll get £1100 and your second year you'll take that £1100 and plus 10% on that of that which equals to £1210 ")
                 
-                interest = input ("\nWhat type of Interest would you like to calculate? Input Either 'Simple' or 'Compound'").lower() #asks user to input either simple or compound.
-                s = "simple" #store 'simple' as a variable
-                c = "compound" #store 'compound' as a variable
-
-                simple = deposit * (1 + year * percent) #calculates simple interest
-                compound = deposit * math.pow ((1 + percent), year) #calculates compound interest
-                round_simple = round(simple,2) #rounds simple to 2 decimal places
-                round_compound = round(compound, 2) #rounds compound to 2 decimal places
-    
-                if interest == s: #if user inputs 'simple' do the following:
-                    print ("_____________________________________")
-                    print (f"Deposit - \t£{deposit}")
-                    print (f"Interest - \t{rate}%")
-                    print (f"Year(s) - \t{year} year")
-                    print (f"Total - \t£{round_simple} ")
-                    print ("_____________________________________")
-                    #prints out a table showing you the following information: Deposit, Interest, Years and Total amount.
-        
-                if interest == c: #if user inputs 'compound' do the following:
-                    print ("_____________________________________")
-                    print (f"Deposit - \t£{deposit}")
-                    print (f"Interest - \t{rate}%")
-                    print (f"Year(s) - \t{year} year")
-                    print (f"Total - \t£{round_compound} ")
-                    print ("_____________________________________")
-                    #prints out a table showing you the following information: Deposit, Interest, Years and Total amount   .
-         
-                elif interest != s and c:
+                
+                interest_type = input ("\nWhat type of Interest would you like to calculate? Input Either 'Simple' or 'Compound'").lower() #asks user to input either simple or compound.
+                if interest_type == 'simple':
+                    total = deposit * (1 + year * percent) #calculates simple interest
+                elif interest_type == 'compound':
+                    total = compound = deposit * math.pow ((1 + percent), year) #calculates compound interest
+                else:
                     print ("Error! You Did Not Enter 'Simple' Or 'Compound'.") #if user doesnt input 'simple' or 'compound' print this message.
+                
+                #prints out a table showing you the following information: Deposit, Interest, Years and Total amount.
+                print (f"""
+                _____________________________________ 
+                Type - \t\t{interest_type.capitalize()}
+                Deposit - \t£{deposit}  
+                Interest - \t{rate}%
+                Year(s) - \t{year} year
+                Total - \t£{round(total, 2)}
+                _____________________________________ 
+                """)
+    
         
 if choice == y: #if user inputs 'bond' do the following:
     print ("\nYou Have Chosen To Use The 'Home Load Calculator'.\nPlease Enter The Following: ") #intro to bonds
